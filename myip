@@ -1,0 +1,16 @@
+#!/usr/bin/python2
+
+import commands
+
+lan = commands.getoutput('ifconfig p4p2').split('\n')[1].strip(' ')
+wifi = commands.getoutput('ifconfig wlp2s0').split('\n')[1].strip(' ')
+localhost = '127.0.0.1'
+
+if lan[0] == 'i':
+	lan=lan.split(' ')[1]
+        print lan
+elif wifi[0] == 'i':
+	wifi=wifi.split(' ')[1]
+	print wifi
+else:
+	print localhost

@@ -1,0 +1,17 @@
+#!/usr/bin/python2
+
+import commands,os
+
+user= commands.getoutput('whoami')
+
+print user 
+
+if(user == 'root'):
+	for i in range(1,5):
+        	commands.getstatusoutput('sshpass -p redhat1 ssh-copy-id -o StrictHostKeyChecking=no -f  root@node'+str(i) )
+		print "done in", i
+else:
+	for i in range(1,5):
+        	commands.getstatusoutput('sshpass -p q ssh-copy-id -o StrictHostKeyChecking=no -f  devops@node'+str(i) )
+		print "done in", i
+

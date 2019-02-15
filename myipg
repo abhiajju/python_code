@@ -1,0 +1,31 @@
+#!/usr/bin/python2
+
+import commands
+
+interfaces = commands.getoutput('nmcli -t device')
+interfaces = interfaces.split('\n')
+
+inet_addr = None
+localhost = '127.0.0.1'
+
+for interface in interfaces:
+	interface = interface.split(':')
+	if interface[1]=='wifi' and interface[2] == 'connected':
+		inet_addr = interface[0]
+		break
+	elif interface[1]=='ethernet' and interface[2] == 'connected':	
+		inet_addr = interface[0]
+		break
+
+if inet_addr is None:
+	print localhost
+else:
+	ip_addr = commands.getoutput('ifconfig '+inet_addr).split('\n')[1]
+	#print ip_addr
+	ip_addr = ip_addr.strip(' ')
+        ip_addr = ip_addr.split(' ')[1]
+	print ip_addr
+
+
+
+
