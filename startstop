@@ -1,0 +1,52 @@
+#!/usr/bin/python2
+
+# program that makes entry of ip and hostname of vms in /etc/hosts so that pinging by hostname is possible
+
+import commands,libvirt,time
+
+conn=libvirt.open("qemu:///system")
+
+ids = conn.listDomainsID()
+l = len(ids)
+print l
+print ids
+# get domain name of vms
+
+names = []
+
+
+for i in ids:
+        lookup=conn.lookupByID(i)
+        info=lookup.info()
+        nm=lookup.name()
+        names.append(nm)
+
+names.sort()
+
+for i in ids:
+	lookup=conn.lookupByID(i)
+	lookup.destroy()
+
+time.sleep(5)
+
+for i in names:
+	print commands.getoutput('virsh start '+i)
+	time.sleep(5)
+
+	
+
+
+
+
+
+
+
+
+	 
+	
+               
+
+
+
+
+
