@@ -9,53 +9,7 @@
    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='geoloc.css') }}">
 </head>
 <body>
-   <h1> Hello {{ name }} !! </h1>
-   <br>
-   <br>
-   <div class = "container">
-   {% if result|length==0 %}
-      <p id="tones"> No tweets </p>
-   {% else %}
-      <p id="text"> {{ text }} </p>
-      {% for tones in result %}
-         <p id="tones"> {{tones}} </p>  
-      {% endfor %}
-   {% endif %}
-   </div>
-   <br>
-   <div class="container">
-      <p class="recommendation"> Here is a list of songs recommended for you !!</p>
-      <div class="row">
-         <div class="col-sm-6">
-            <p class="recommendation"> English Songs </p>
-            {% if songs|length==0 %}
-               <p class="songs"> No songs found for your mood </p>
-            {% else %}
-               {% for song in songs %}
-                  <p class="songs"> {{song}} </p>  
-               {% endfor %}
-            {% endif %}
-         </div>
-         <div class="col-sm-6">
-            <p class="recommendation"> Hindi Songs </p>
-            {% for song in hsongs %}
-               {% if song.sad %}
-                  <p class="songs"> {{song.sad}} </p>
-               {% endif %}
-               {% if song.tentative %}
-                  <p class="songs"> {{song.tentative}} </p>
-               {% endif %}
-               {% if song.happy %}
-                  <p class="songs"> {{song.happy}} </p>
-               {% endif %}
-            {% endfor %}
-         </div>
-      </div>
-   </div>
-   <br>
-   <a href="#" id="get_location">Please click  to know about doctors nearby</a>
-   <div id="map">
-   </div>
+   <h1> Hello {{ result }} hiii {{ passw }} </h1>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
